@@ -1,0 +1,337 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+:root {
+  --color-white: #FFFFFF;
+  --color-text-main: #333333;
+  --color-text-dark: #111111;
+  --color-text-light: #666666;
+  --primary-color: #00796B; /* Teal */
+  --color-teal: #00796B;
+  --color-teal-light: #E0F2F1;
+  --color-gray-bg: #F8F9FA;
+  --color-placeholder: #E9ECEF;
+  --color-border: #EEEEEE;
+  
+  --font-main: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-white);
+  color: var(--color-text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 80px; /* Header height */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Section Common */
+.section {
+  padding: 100px 0;
+}
+
+.section-bg-gray {
+  background-color: var(--color-gray-bg);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+  text-align: center;
+  margin-bottom: 4rem;
+  font-weight: 400;
+}
+
+/* Placeholders */
+.img-placeholder {
+  background-color: var(--color-placeholder);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 1rem;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--color-teal);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: #006666;
+}
+
+/* Specific Header Styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-teal);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gnb {
+  display: flex;
+  gap: 40px;
+  height: 100%;
+}
+
+.gnb-item {
+  position: relative;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.gnb-link {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--color-text-main);
+  transition: color 0.3s;
+}
+
+.gnb-item:hover .gnb-link {
+  color: var(--color-teal);
+}
+
+/* 2-Tier Dropdown */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: var(--color-white);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 10px 0;
+  min-width: 180px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top center;
+  z-index: 1001;
+}
+
+/* Add an invisible bridge to prevent dropdown from closing when moving mouse */
+.gnb-item::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  display: none;
+}
+
+.gnb-item:hover::after {
+  display: block;
+}
+
+.gnb-item:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item a {
+  display: block;
+  padding: 12px 24px;
+  color: var(--color-text-main);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.dropdown-item a:hover {
+  background-color: var(--color-teal-light);
+  color: var(--color-teal);
+}
+
+/* Floating CTA */
+.floating-cta {
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.floating-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.floating-btn {
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-color);
+  color: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 15px rgba(0, 121, 107, 0.4);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.floating-btn:hover {
+  transform: scale(1.1);
+  color: #fff;
+}
+
+.tooltip {
+  position: absolute;
+  left: 75px;
+  background-color: var(--color-text-dark);
+  color: var(--color-white);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -5px;
+  transform: translateY(-50%);
+  border-width: 5px 5px 5px 0;
+  border-style: solid;
+  border-color: transparent var(--color-text-dark) transparent transparent;
+}
+
+.floating-item:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--color-gray-bg);
+  color: var(--color-text-light);
+  padding: 60px 0 40px;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  margin-bottom: 20px;
+}
+
+.footer-info p {
+  margin-bottom: 8px;
+  color: var(--color-text-main);
+}
+
+.footer-info span {
+  color: var(--color-text-dark);
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-light);
+}

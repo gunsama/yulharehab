@@ -1,0 +1,231 @@
+/* Home.css */
+.hero {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-teal-light);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-video-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0;
+  /* Placeholder background color until video is added */
+  background: #e0f2f1;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(0,128,128,0.2) 0%, rgba(255,255,255,0.8) 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-logo {
+  font-size: 4rem;
+  color: var(--color-teal);
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-text-dark);
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.hero-title span {
+  color: var(--color-teal);
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--color-text-main);
+  margin-bottom: 40px;
+}
+
+/* Intro Section */
+.intro-text {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--color-text-main);
+  text-align: center;
+  padding: 40px;
+  background: var(--color-white);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  position: relative;
+}
+
+.intro-text::before {
+  content: '"';
+  font-size: 6rem;
+  color: var(--color-teal-light);
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-family: serif;
+}
+
+/* Staff Section */
+.staff-card {
+  display: flex;
+  gap: 40px;
+  background: var(--color-white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.staff-image {
+  flex: 1;
+  min-width: 300px;
+}
+
+.staff-info {
+  flex: 2;
+  padding: 40px;
+}
+
+.staff-name {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-teal);
+  margin-bottom: 10px;
+}
+
+.staff-title {
+  font-size: 1.2rem;
+  color: var(--color-text-main);
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: inline-block;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--color-teal-light);
+}
+
+.staff-details h4 {
+  font-size: 1.1rem;
+  color: var(--color-text-dark);
+  margin: 20px 0 10px;
+}
+
+.staff-details ul {
+  list-style: disc;
+  padding-left: 20px;
+  color: var(--color-text-main);
+}
+
+.staff-details li {
+  margin-bottom: 8px;
+}
+
+/* Location Section */
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.map-container {
+  height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Equipment Section */
+.equipment-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.equipment-item {
+  background: var(--color-white);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: transform 0.3s;
+}
+
+.equipment-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,128,128,0.05);
+  border-color: var(--color-teal-light);
+}
+
+.eq-icon {
+  font-size: 2rem;
+  color: var(--color-teal);
+}
+
+/* Gallery Section */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.gallery-item {
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(255,255,255,0.9);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  color: var(--color-teal);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.icon-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 20px;
+  border: 2px solid var(--color-border);
+  margin: 0 auto 20px;
+  display: block;
+  background: var(--color-white);
+  padding: 15px;
+}

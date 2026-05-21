@@ -26,7 +26,7 @@ const Home = () => {
       {/* Quick Links / Main Clinics */}
       <section className="section section-bg-gray" style={{ padding: '60px 0' }}>
         <div className="container">
-          <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
+          <div className="grid-3" style={{ gap: '30px' }}>
             <Link to="/spine-joint/neck" className="quick-link-card">
               <img src="/icon/chiropractic.png" alt="척추·관절클리닉" className="icon-img" />
               <h3>척추·관절 클리닉</h3>
@@ -65,7 +65,7 @@ const Home = () => {
             <p style={{ color: '#666', fontSize: '1.1rem' }}>율하재활의학과만의 특별한 맞춤 치료 시스템</p>
           </div>
           
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+          <div className="grid-2">
             <div className="treatment-card" style={{ background: '#f8f9fa', padding: '40px', borderRadius: '15px', display: 'flex', alignItems: 'center', gap: '20px' }}>
               <div style={{ width: '80px', height: '80px', background: '#fff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 4px 10px rgba(0,0,0,0.05)', border: '1px solid #eee' }}>
                 <img src="/icon/injection.png" alt="C-ARM 정밀통증주사" style={{ width: '40px' }} />
@@ -91,7 +91,7 @@ const Home = () => {
       {/* Notice & Review Summary */}
       <section className="section section-bg-gray">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px' }}>
+          <div className="grid-2" style={{ gap: '40px' }}>
             <div style={{ background: '#fff', padding: '30px', borderRadius: '15px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
                 <h3 style={{ fontSize: '1.4rem' }}>공지사항</h3>

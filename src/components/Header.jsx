@@ -1,7 +1,26 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaHospitalSymbol } from 'react-icons/fa';
+import { FaHospitalSymbol, FaBars, FaTimes } from 'react-icons/fa';
 
 const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeAccordion, setActiveAccordion] = useState(null);
+
+  const closeMenu = () => {
+    setIsMobileMenuOpen(false);
+    setActiveAccordion(null);
+  };
+
+  const handleMenuClick = (e, index, hasDropdown) => {
+    if (window.innerWidth <= 768 && hasDropdown) {
+      e.preventDefault();
+      e.stopPropagation();
+      setActiveAccordion(activeAccordion === index ? null : index);
+    } else if (!hasDropdown) {
+      closeMenu();
+    }
+  };
+
   return (
     <header className="header">
       <div className="container">
@@ -23,48 +42,71 @@ const Header = () => {
             }}
           />
         </Link>
+
+        <button 
+          className="mobile-menu-btn" 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+
+        {isMobileMenuOpen && (
+          <div 
+            className="mobile-overlay" 
+            onClick={() => setIsMobileMenuOpen(false)}
+          ></div>
+        )}
+
         <nav>
-          <ul className="gnb">
+          <ul className={`gnb ${isMobileMenuOpen ? 'open' : ''}`}>
             <li className="gnb-item">
-              <Link to="/about" className="gnb-link">병원소개</Link>
-              <ul className="dropdown">
-                <li className="dropdown-item"><Link to="/about#greeting">대표원장 인사말</Link></li>
-                <li className="dropdown-item"><Link to="/about#doctors">의료진 소개</Link></li>
-                <li className="dropdown-item"><Link to="/about#location">진료시간 | 오시는길</Link></li>
-                <li className="dropdown-item"><Link to="/about#equipments">보유장비</Link></li>
-                <li className="dropdown-item"><Link to="/about#tour">병원 둘러보기</Link></li>
-                <li className="dropdown-item"><Link to="/about#notice">공지사항</Link></li>
+              <Link to="/about" className="gnb-link" onClick={(e) => handleMenuClick(e, 0, true)}>
+                병원소개 <span className="mobile-chevron">{activeAccordion === 0 ? '▲' : '▼'}</span>
+              </Link>
+              <ul className={`dropdown ${activeAccordion === 0 ? 'active' : ''}`}>
+                <li className="dropdown-item"><Link to="/about#greeting" onClick={closeMenu}>대표원장 인사말</Link></li>
+                <li className="dropdown-item"><Link to="/about#doctors" onClick={closeMenu}>의료진 소개</Link></li>
+                <li className="dropdown-item"><Link to="/about#location" onClick={closeMenu}>진료시간 | 오시는길</Link></li>
+                <li className="dropdown-item"><Link to="/about#equipments" onClick={closeMenu}>보유장비</Link></li>
+                <li className="dropdown-item"><Link to="/about#tour" onClick={closeMenu}>병원 둘러보기</Link></li>
+                <li className="dropdown-item"><Link to="/about#notice" onClick={closeMenu}>공지사항</Link></li>
               </ul>
             </li>
             <li className="gnb-item">
-              <Link to="/spine-joint/neck" className="gnb-link">척추·관절 클리닉</Link>
-              <ul className="dropdown">
-                <li className="dropdown-item"><Link to="/spine-joint/neck">목 통증</Link></li>
-                <li className="dropdown-item"><Link to="/spine-joint/back">허리·골반 통증</Link></li>
-                <li className="dropdown-item"><Link to="/spine-joint/shoulder">어깨 통증</Link></li>
-                <li className="dropdown-item"><Link to="/spine-joint/knee">무릎 통증</Link></li>
-                <li className="dropdown-item"><Link to="/spine-joint/upper-limb">상지 통증</Link></li>
-                <li className="dropdown-item"><Link to="/spine-joint/foot-ankle">발·발목 통증</Link></li>
+              <Link to="/spine-joint/neck" className="gnb-link" onClick={(e) => handleMenuClick(e, 1, true)}>
+                척추·관절 클리닉 <span className="mobile-chevron">{activeAccordion === 1 ? '▲' : '▼'}</span>
+              </Link>
+              <ul className={`dropdown ${activeAccordion === 1 ? 'active' : ''}`}>
+                <li className="dropdown-item"><Link to="/spine-joint/neck" onClick={closeMenu}>목 통증</Link></li>
+                <li className="dropdown-item"><Link to="/spine-joint/back" onClick={closeMenu}>허리·골반 통증</Link></li>
+                <li className="dropdown-item"><Link to="/spine-joint/shoulder" onClick={closeMenu}>어깨 통증</Link></li>
+                <li className="dropdown-item"><Link to="/spine-joint/knee" onClick={closeMenu}>무릎 통증</Link></li>
+                <li className="dropdown-item"><Link to="/spine-joint/upper-limb" onClick={closeMenu}>상지 통증</Link></li>
+                <li className="dropdown-item"><Link to="/spine-joint/foot-ankle" onClick={closeMenu}>발·발목 통증</Link></li>
               </ul>
             </li>
             <li className="gnb-item">
-              <Link to="/pain-clinic" className="gnb-link">비수술 통증 클리닉</Link>
-              <ul className="dropdown">
-                <li className="dropdown-item"><Link to="/pain-clinic#c-arm">C-ARM 정밀통증주사</Link></li>
-                <li className="dropdown-item"><Link to="/pain-clinic#dna">조직 재생 주사치료</Link></li>
-                <li className="dropdown-item"><Link to="/pain-clinic#eswt">체외충격파치료</Link></li>
-                <li className="dropdown-item"><Link to="/pain-clinic#manual">맞춤형 도수치료</Link></li>
+              <Link to="/pain-clinic" className="gnb-link" onClick={(e) => handleMenuClick(e, 2, true)}>
+                비수술 통증 클리닉 <span className="mobile-chevron">{activeAccordion === 2 ? '▲' : '▼'}</span>
+              </Link>
+              <ul className={`dropdown ${activeAccordion === 2 ? 'active' : ''}`}>
+                <li className="dropdown-item"><Link to="/pain-clinic#c-arm" onClick={closeMenu}>C-ARM 정밀통증주사</Link></li>
+                <li className="dropdown-item"><Link to="/pain-clinic#dna" onClick={closeMenu}>조직 재생 주사치료</Link></li>
+                <li className="dropdown-item"><Link to="/pain-clinic#eswt" onClick={closeMenu}>체외충격파치료</Link></li>
+                <li className="dropdown-item"><Link to="/pain-clinic#manual" onClick={closeMenu}>맞춤형 도수치료</Link></li>
               </ul>
             </li>
             <li className="gnb-item">
-              <Link to="/rehab-iv" className="gnb-link">재활·수액 클리닉</Link>
-              <ul className="dropdown">
-                <li className="dropdown-item"><Link to="/rehab-iv#rehab">재활치료</Link></li>
-                <li className="dropdown-item"><Link to="/rehab-iv#iv">맞춤형 영양수액 클리닉</Link></li>
+              <Link to="/rehab-iv" className="gnb-link" onClick={(e) => handleMenuClick(e, 3, true)}>
+                재활·수액 클리닉 <span className="mobile-chevron">{activeAccordion === 3 ? '▲' : '▼'}</span>
+              </Link>
+              <ul className={`dropdown ${activeAccordion === 3 ? 'active' : ''}`}>
+                <li className="dropdown-item"><Link to="/rehab-iv#rehab" onClick={closeMenu}>재활치료</Link></li>
+                <li className="dropdown-item"><Link to="/rehab-iv#iv" onClick={closeMenu}>맞춤형 영양수액 클리닉</Link></li>
               </ul>
             </li>
             <li className="gnb-item">
-              <Link to="/reviews" className="gnb-link">치료후기</Link>
+              <Link to="/reviews" className="gnb-link" onClick={(e) => handleMenuClick(e, 4, false)}>치료후기</Link>
             </li>
           </ul>
         </nav>

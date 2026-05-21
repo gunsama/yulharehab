@@ -8,7 +8,7 @@ const Footer = () => {
     <>
       <footer className="footer">
         <div className="container">
-          <div className="footer-content" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '40px' }}>
+          <div className="footer-content grid-3" style={{ gap: '40px' }}>
             <div className="footer-left">
               <div className="footer-logo">율하재활의학과의원</div>
               <p>바른 움직임이 다시 시작되는 곳, 율하재활의학과가 든든한 동행자가 되어드리겠습니다.</p>

@@ -229,3 +229,30 @@
   background: var(--color-white);
   padding: 15px;
 }
+
+@media (max-width: 768px) {
+  .location-grid, .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .staff-card {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .staff-image {
+    min-width: 100%;
+  }
+  
+  .staff-info {
+    padding: 20px;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  
+  .hero-logo {
+    font-size: 2.8rem;
+  }
+}

@@ -230,7 +230,7 @@
   padding: 15px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .location-grid, .gallery-grid {
     grid-template-columns: 1fr;
   }

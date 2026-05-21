@@ -369,7 +369,7 @@ img {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   /* Layout */
   .grid-2, .grid-3 {
     grid-template-columns: 1fr;

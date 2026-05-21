@@ -12,7 +12,7 @@ const Header = () => {
   };
 
   const handleMenuClick = (e, index, hasDropdown) => {
-    if (window.innerWidth <= 768 && hasDropdown) {
+    if (window.innerWidth <= 1024 && hasDropdown) {
       e.preventDefault();
       e.stopPropagation();
       setActiveAccordion(activeAccordion === index ? null : index);

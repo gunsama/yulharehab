@@ -9,6 +9,10 @@ import PainClinic from './pages/PainClinic';
 import RehabIvClinic from './pages/RehabIvClinic';
 import Reviews from './pages/Reviews';
 import DiseaseDetail from './pages/DiseaseDetail';
+import NoticeList from './pages/NoticeList';
+import NoticeDetail from './pages/NoticeDetail';
+import NoticeForm from './pages/NoticeForm';
+import AdminLogin from './pages/AdminLogin';
 
 function App() {
   return (
@@ -24,6 +28,11 @@ function App() {
             <Route path="/pain-clinic" element={<PainClinic />} />
             <Route path="/rehab-iv" element={<RehabIvClinic />} />
             <Route path="/reviews" element={<Reviews />} />
+            <Route path="/notice" element={<NoticeList />} />
+            <Route path="/notice/:id" element={<NoticeDetail />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/notice/write" element={<NoticeForm />} />
+            <Route path="/admin/notice/edit/:id" element={<NoticeForm />} />
           </Routes>
         </main>
         <Footer />

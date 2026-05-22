@@ -69,7 +69,7 @@ const Header = () => {
                 <li className="dropdown-item"><Link to="/about#location" onClick={closeMenu}>진료시간 | 오시는길</Link></li>
                 <li className="dropdown-item"><Link to="/about#equipments" onClick={closeMenu}>보유장비</Link></li>
                 <li className="dropdown-item"><Link to="/about#tour" onClick={closeMenu}>병원 둘러보기</Link></li>
-                <li className="dropdown-item"><Link to="/about#notice" onClick={closeMenu}>공지사항</Link></li>
+                <li className="dropdown-item"><Link to="/notice" onClick={closeMenu}>공지사항</Link></li>
               </ul>
             </li>
             <li className="gnb-item">

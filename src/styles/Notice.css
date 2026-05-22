@@ -1,0 +1,256 @@
+/* Notice Board Styles */
+.notice-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 60vh;
+}
+
+.notice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #0056b3;
+  padding-bottom: 15px;
+}
+
+.notice-title {
+  font-size: 2rem;
+  color: #222;
+  margin: 0;
+}
+
+.notice-btn {
+  background-color: #0056b3;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.notice-btn:hover {
+  background-color: #003d82;
+  color: white;
+}
+
+.notice-btn.outline {
+  background-color: transparent;
+  color: #0056b3;
+  border: 1px solid #0056b3;
+}
+
+.notice-btn.outline:hover {
+  background-color: #f0f7ff;
+}
+
+.notice-btn.danger {
+  background-color: transparent;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+}
+
+.notice-btn.danger:hover {
+  background-color: #ffe6e6;
+}
+
+/* Notice List Table */
+.notice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.notice-table th,
+.notice-table td {
+  padding: 15px 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.notice-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+}
+
+.notice-table td.title-cell {
+  text-align: left;
+}
+
+.notice-table td.title-cell a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  transition: color 0.2s;
+}
+
+.notice-table td.title-cell a:hover {
+  color: #0056b3;
+}
+
+.empty-notice {
+  text-align: center;
+  padding: 50px;
+  color: #777;
+}
+
+/* Notice Detail */
+.notice-detail-header {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.notice-detail-title {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.notice-meta {
+  display: flex;
+  gap: 20px;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.notice-content {
+  line-height: 1.8;
+  font-size: 1.1rem;
+  color: #333;
+  min-height: 300px;
+  white-space: pre-wrap; /* For rendering newlines */
+  margin-bottom: 40px;
+}
+
+.notice-actions {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Forms (Login & Write/Edit) */
+.admin-form-container {
+  max-width: 500px;
+  margin: 100px auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.admin-form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #444;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #0056b3;
+  box-shadow: 0 0 0 2px rgba(0,86,179,0.1);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 300px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.error-message {
+  color: #dc3545;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  /* Table to Card layout on mobile */
+  .notice-table thead {
+    display: none;
+  }
+  
+  .notice-table, .notice-table tbody, .notice-table tr, .notice-table td {
+    display: block;
+    width: 100%;
+  }
+  
+  .notice-table tr {
+    border-bottom: 1px solid #ccc;
+    padding: 15px 0;
+  }
+  
+  .notice-table td {
+    border: none;
+    padding: 5px 10px;
+    text-align: left;
+  }
+  
+  .notice-table td.id-cell {
+    display: none;
+  }
+  
+  .notice-table td.title-cell {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .notice-table td.date-cell,
+  .notice-table td.views-cell {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: #666;
+  }
+  
+  .notice-table td.views-cell::before {
+    content: "조회수: ";
+  }
+  
+  .notice-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}
